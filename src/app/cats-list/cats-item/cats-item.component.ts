@@ -17,7 +17,9 @@ export class CatsItemComponent implements OnInit {
 
   ngOnInit() {
     this.catName = this.singleCat.name;
-    console.log(this.catName);
+    this.catColor = this.singleCat.color;
+    this.ownerId = this.singleCat.ownerNumber;
+    this.imgPath = this.singleCat.imageURL;
   }
 
 }
