@@ -3,14 +3,16 @@
         <br/>   
   <div form-group>
     <label for="catName">Name</label>
-    <input type="text" [(ngModel)]="catName" id="name" class="form-control">
+    <input type="text"
+    click="EditName()" [(ngModel)]="catName" id="name" class="form-control">
+    <button class="btn btn-default"  (click)="EditName()">Submitt Change</button>
   </div>
   <div form-group>
     <label for="catColor">Color</label>
-    <input type="text" [(ngModel)]="catColor" id="name" class="form-control">
+    <input type="text" [ngModel]="catColor" id="name" class="form-control">
   </div>
   <div form-group>
     <label for="ownerId">Owner</label>
-    <input type="text" id="name" [(ngModel)]="ownerId" class="form-control" name="ownerId">
+    <input type="text" id="name" [ngModel]="ownerId" class="form-control" name="ownerId">
   </div>
 </li>

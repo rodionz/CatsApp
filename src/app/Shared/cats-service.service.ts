@@ -24,6 +24,10 @@ export class CatsService {
     return this.cats;
   }
 
+  updateCat(index, cat){
+    this.cats[index] = cat;
+  }
+
 }
 
 
