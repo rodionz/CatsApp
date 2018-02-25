@@ -1,6 +1,12 @@
 
+<ul class="list-inline">
+<app-cats-item *ngFor="let cat of cats let i = index" [singleCat]="cat" [index]="i"></app-cats-item>
+</ul>
 
-<app-cats-item *ngFor="let cat of cats" [singleCat]="cat"></app-cats-item>
+
+
+
+
 <button class="btn btn-warning">Alarm</button>
 
 

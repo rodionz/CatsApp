@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cats-item',
@@ -7,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CatsItemComponent implements OnInit {
 @Input() singleCat;
+@Input() index: number;
+@ViewChild('f') slForm: NgForm;
   constructor() { }
 
   catName = "";
@@ -21,5 +24,11 @@ export class CatsItemComponent implements OnInit {
     this.ownerId = this.singleCat.ownerNumber;
     this.imgPath = this.singleCat.imageURL;
   }
+
+
+  onSubmit(form: NgForm) {
+   
+  }
+
 
 }
