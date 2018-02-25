@@ -1,42 +1,16 @@
-
-
-<li class="list-inline-item">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-
-            <div  form-group>
-                    <label for="catName">Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      class="form-control"
-                      name="catName"
-                      ngModel
-                      required
-                    >
-                    <div  form-group>
-                            <label for="catColor">Name</label>
-                            <input
-                              type="text"
-                              id="name"
-                              class="form-control"
-                              name="catColor"
-                              ngModel
-                              required
-                            >
-                            <div  form-group>
-                                    <label for="ownerId">Name</label>
-                                    <input
-                                      type="text"
-                                      id="name"
-                                      class="form-control"
-                                      name="ownerId"
-                                      ngModel
-                                      required
-                                    >
-      
-        
-        
-    </form>
-    <img [src]="imgPath"/>
-    </li>
-   
+<li class="list-inline-item border border-primary">
+        <img [src]="imgPath" />
+        <br/>   
+  <div form-group>
+    <label for="catName">Name</label>
+    <input type="text" [(ngModel)]="catName" id="name" class="form-control">
+  </div>
+  <div form-group>
+    <label for="catColor">Color</label>
+    <input type="text" [(ngModel)]="catColor" id="name" class="form-control">
+  </div>
+  <div form-group>
+    <label for="ownerId">Owner</label>
+    <input type="text" id="name" [(ngModel)]="ownerId" class="form-control" name="ownerId">
+  </div>
+</li>
