@@ -16,7 +16,9 @@ export class CatsListComponent implements OnInit {
   constructor(private catService: CatsService,private modalService: NgbModal) { }
 
   ngOnInit() {
-   this.cats = this.catService.getCats();
+   this.catService.getCats()
+   .subscribe(result => {
+   })
   }
 
   open(content) {

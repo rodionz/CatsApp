@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CatsListComponent } from './cats-list/cats-list.component';
 import { CatsService } from './Shared/cats-service.service';
 import { CatsItemComponent } from './cats-list/cats-item/cats-item.component';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CatsItemComponent } from './cats-list/cats-item/cats-item.component';
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
 
   providers: [CatsService],
