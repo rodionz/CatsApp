@@ -8,12 +8,14 @@ import { CatsService } from './Shared/cats-service.service';
 import { CatsItemComponent } from './cats-list/cats-item/cats-item.component';
 import { HttpModule } from '@angular/http';
 import {NgPipesModule} from 'ngx-pipes';
+import { ColorfilterPipe } from './colorfilter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatsListComponent,
     CatsItemComponent,
+    ColorfilterPipe,
     
   ],
   imports: [

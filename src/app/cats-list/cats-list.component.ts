@@ -13,7 +13,7 @@ import {NgbDateStruct, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-boo
 export class CatsListComponent implements OnInit {
   cats: any[] = [];
   closeResult: string;
-  sortParam: '';
+  filteredColor ="";
   constructor(private catService: CatsService,private modalService: NgbModal) { }
 
   ngOnInit() {
