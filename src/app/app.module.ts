@@ -7,7 +7,7 @@ import { CatsListComponent } from './cats-list/cats-list.component';
 import { CatsService } from './Shared/cats-service.service';
 import { CatsItemComponent } from './cats-list/cats-item/cats-item.component';
 import { HttpModule } from '@angular/http';
-
+import {NgPipesModule} from 'ngx-pipes';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgPipesModule
   ],
 
   providers: [CatsService],

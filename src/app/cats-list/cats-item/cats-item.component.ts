@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { connect } from 'tls';
+
 import { CatsService } from '../../Shared/cats-service.service';
 
 @Component({
@@ -30,13 +30,12 @@ constructor(private catService : CatsService) { }
 
 
   onSubmit(form: NgForm) {
-   
   }
+
   EditName(){
     console.log(this.catName)
     console.log(this.index);
-    this.singleCat.catName = this.catName;
-    this.catService.updateCat(this.index, this.singleCat);
+    
   }
 
 }

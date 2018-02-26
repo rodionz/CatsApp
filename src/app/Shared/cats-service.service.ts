@@ -11,9 +11,7 @@ export class CatsService {
     
   }
 
-  updateCat(index, cat){
-    //this.cats[index] = cat;
-  }
+  
 
 }
 
