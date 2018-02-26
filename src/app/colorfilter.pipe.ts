@@ -6,11 +6,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ColorfilterPipe implements PipeTransform {
 
-  transform(value: any, filterString : string , propName : string): any {
+  transform(value: any[], filterString : string , propName : string): any[] {
+    const resultArray = [];
     if(value.length === 0){
       return value;
     }
-    const resultArray = [];
+
+    else if (filterString === "")
+    {
+      return value;
+    }
+    
+else{
+
     for (let item of value)
     {
       if(item[propName] === filterString){
@@ -19,5 +27,5 @@ export class ColorfilterPipe implements PipeTransform {
     }
     return resultArray;
   }
-
+  }
 }
