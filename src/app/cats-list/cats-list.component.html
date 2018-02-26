@@ -1,11 +1,15 @@
-<div class="container"></div>
+<div class="container">
+  <br>
+  <button (click)="sortByName()">Sort by Name</button>
+  <button (click)="sortbyColor()">Sort by Color</button>
+
 <ul class="list-inline">
-<app-cats-item *ngFor="let cat of cats | orderBy: 'catName'; let i = index"  [singleCat]="cat" [index]="i"></app-cats-item>
+<app-cats-item *ngFor="let cat of cats; let i = index"  [singleCat]="cat" [index]="i"></app-cats-item>
 </ul>
 
 
 
-
+</div>
 
 <button class="btn btn-warning">Alarm</button>
 

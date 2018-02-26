@@ -13,6 +13,7 @@ import {NgbDateStruct, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-boo
 export class CatsListComponent implements OnInit {
   cats: any[] = [];
   closeResult: string;
+  sortParam: '';
   constructor(private catService: CatsService,private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -21,6 +22,31 @@ export class CatsListComponent implements OnInit {
      this.cats = result.json()
    })
   }
+
+
+  sortByName(){
+    this.cats.sort(
+      function(a, b) {
+        var nameA = a.name.toUpperCase(); 
+        var nameB = b.name.toUpperCase(); 
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      }
+    )
+    console.log(this.cats)
+  }
+
+  sortbyColor(){
+    this.cats.sort(function(a,b) {return (a.color > b.color) ? 1 : ((b.color > a.color) ? -1 : 0);});
+    console.log(this.cats)
+  }
+
+
 
   open(content) {
     this.modalService.open(content).result.then((result) => {
