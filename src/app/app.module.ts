@@ -7,8 +7,8 @@ import { CatsListComponent } from './cats-list/cats-list.component';
 import { CatsService } from './Shared/cats-service.service';
 import { CatsItemComponent } from './cats-list/cats-item/cats-item.component';
 import { HttpModule } from '@angular/http';
-import {NgPipesModule} from 'ngx-pipes';
 import { ColorfilterPipe } from './colorfilter.pipe';
+import { MymodalComponent } from './Shared/mymodal/mymodal.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +16,15 @@ import { ColorfilterPipe } from './colorfilter.pipe';
     CatsListComponent,
     CatsItemComponent,
     ColorfilterPipe,
+    MymodalComponent,
     
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
-    HttpModule,
-    NgPipesModule
+    HttpModule
+    
   ],
 
   providers: [CatsService],

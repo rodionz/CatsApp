@@ -13,27 +13,40 @@
 
 </div>
 
-<button class="btn btn-warning">Alarm</button>
+
 
 
 
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
+      <h4 class="modal-title">Add New Cat</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>One fine body&hellip;</p>
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="row">
+        <div class="form-group col-sm-5">
+        <label for="name">Name</label>
+        <input type="text" name="name" ngModel>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-5">
+        <button type="submit">Submitt</button>
+        </div>
+        </div>
+      </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="d('Close click')">Close</button>
     </div>
   </ng-template>
   
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add new Cat</button>
   
   <hr>
   

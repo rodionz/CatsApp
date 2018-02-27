@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CatsService } from '../Shared/cats-service.service';
 import {NgbDateStruct, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cats-list',
@@ -14,6 +15,7 @@ export class CatsListComponent implements OnInit {
   cats: any[] = [];
   closeResult: string;
   filteredColor ="";
+  @ViewChild('f') slForm: NgForm;
   constructor(private catService: CatsService,private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -23,6 +25,9 @@ export class CatsListComponent implements OnInit {
    })
   }
 
+  onSubmit(form: NgForm) {
+    console.log(form);
+  }
 
   sortByName(){
     this.cats.sort(
@@ -43,6 +48,7 @@ export class CatsListComponent implements OnInit {
 
   sortbyColor(){
     this.cats.sort(function(a,b) {return (a.color > b.color) ? 1 : ((b.color > a.color) ? -1 : 0);});
+    
     console.log(this.cats)
   }
 
