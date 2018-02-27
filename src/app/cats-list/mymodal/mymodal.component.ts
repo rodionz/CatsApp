@@ -1,0 +1,63 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-mymodal',
+  templateUrl: './mymodal.component.html',
+  styleUrls: ['./mymodal.component.css']
+})
+export class MymodalComponent implements OnInit {
+
+  closeResult: string;
+  inputsForm:FormGroup;
+  Spacing:number; 
+  DLarge:number;
+  @Output() passData:EventEmitter<Object> = new EventEmitter();
+  constructor(private modalService: NgbModal,private fb:FormBuilder) { }
+
+  ngOnInit(): void {
+    this.inputsForm=this.fb.group({
+      Spacing: [this.Spacing, [Validators.required,this.checkSpacing]],
+      DLarge:[this.DLarge,[Validators.required,this.checkDLarge]],
+    })
+    }
+
+  setValues(){
+    this.passData.emit({Spacing:this.Spacing,DLarge:this.DLarge})
+    }
+
+    checkSpacing(control:FormControl){
+      if(control.value==16 || control.value==24){
+        return{validSpacing:false};
+      }
+      return {validSpacing:true};
+    }
+
+    checkDLarge(control:FormControl){
+      if(control.value==3.5 || control.value==4 || control.value==6){
+        return {validD:false}
+      }
+      else{
+        return {validD:true}
+      }
+    }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+}

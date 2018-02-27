@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CatsService } from '../Shared/cats-service.service';
 import {NgbDateStruct, NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cats-list',
@@ -13,21 +13,28 @@ import { NgForm } from '@angular/forms';
 
 export class CatsListComponent implements OnInit {
   cats: any[] = [];
-  closeResult: string;
+
   filteredColor ="";
-  @ViewChild('f') slForm: NgForm;
-  constructor(private catService: CatsService,private modalService: NgbModal) { }
+  spacing:number; 
+  length:number;
+
+  constructor(private catService: CatsService, private fb:FormBuilder) { }
 
   ngOnInit() {
    this.catService.getCats()
    .subscribe(result => {
      this.cats = result.json()
-   })
-  }
+   });
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+   
   }
+  
+
+  getData(message:any){ 
+    console.log(message);
+    this.spacing=message.Spacing; 
+    this.length=message.Length;
+     }
 
   sortByName(){
     this.cats.sort(
@@ -54,21 +61,5 @@ export class CatsListComponent implements OnInit {
 
 
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
 }
