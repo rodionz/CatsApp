@@ -15,10 +15,12 @@ export class CatsListComponent implements OnInit {
   cats: any[] = [];
 
   filteredColor ="";
-  spacing:number; 
-  length:number;
+  name:string; 
+  color:string;
+  ownerNumber: string;
+  imageURL:string;
 
-  constructor(private catService: CatsService, private fb:FormBuilder) { }
+  constructor(private catService: CatsService) { }
 
   ngOnInit() {
    this.catService.getCats()
@@ -31,9 +33,13 @@ export class CatsListComponent implements OnInit {
   
 
   getData(message:any){ 
-    console.log(message);
-    this.spacing=message.Spacing; 
-    this.length=message.Length;
+    
+    this.name = message.name.value; 
+    this.color = message.color.value;
+    this.ownerNumber = message.ownerNumber.value;
+    this.imageURL = message.imageURL.value;
+    var obj = {name: this.name, color :this.color, ownerNumber: this.ownerNumber, imageURL: this.imageURL };
+    this.cats.push(obj);
      }
 
   sortByName(){

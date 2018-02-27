@@ -11,37 +11,27 @@ export class MymodalComponent implements OnInit {
 
   closeResult: string;
   inputsForm:FormGroup;
-  Spacing:number; 
-  DLarge:number;
+ 
+
   @Output() passData:EventEmitter<Object> = new EventEmitter();
-  constructor(private modalService: NgbModal,private fb:FormBuilder) { }
+
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.inputsForm=this.fb.group({
-      Spacing: [this.Spacing, [Validators.required,this.checkSpacing]],
-      DLarge:[this.DLarge,[Validators.required,this.checkDLarge]],
+    this.inputsForm = new FormGroup({
+      'name' : new FormControl('', Validators.required),
+      'color' : new FormControl('', Validators.required),
+      'ownerNumber' : new FormControl('', Validators.required),
+      'imageURL' : new FormControl('', Validators.required)
+
     })
     }
 
   setValues(){
-    this.passData.emit({Spacing:this.Spacing,DLarge:this.DLarge})
+    this.passData.emit(this.inputsForm.controls)
     }
 
-    checkSpacing(control:FormControl){
-      if(control.value==16 || control.value==24){
-        return{validSpacing:false};
-      }
-      return {validSpacing:true};
-    }
-
-    checkDLarge(control:FormControl){
-      if(control.value==3.5 || control.value==4 || control.value==6){
-        return {validD:false}
-      }
-      else{
-        return {validD:true}
-      }
-    }
+    
 
   open(content) {
     this.modalService.open(content).result.then((result) => {
